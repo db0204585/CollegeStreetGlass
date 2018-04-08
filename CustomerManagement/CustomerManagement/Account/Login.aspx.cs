@@ -4,13 +4,14 @@ using System;
 using System.Web;
 using System.Web.UI;
 using CustomerManagement;
+using System.Diagnostics;
 
 public partial class Account_Login : Page
 {
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register";
-            OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
+            //OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
             var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
             if (!String.IsNullOrEmpty(returnUrl))
             {
@@ -29,7 +30,8 @@ public partial class Account_Login : Page
                 {
                     IdentityHelper.SignIn(manager, user, RememberMe.Checked);
                     IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
-                }
+                    System.Diagnostics.Process.Start("http://www.google.com");
+            }
                 else
                 {
                     FailureText.Text = "Invalid username or password.";
