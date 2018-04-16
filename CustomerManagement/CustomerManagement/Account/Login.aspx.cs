@@ -27,10 +27,8 @@ public partial class Account_Login : Page
                 var manager = new UserManager();
                 ApplicationUser user = manager.Find(UserName.Text, Password.Text);
                 if (user != null)
-                {
-                    IdentityHelper.SignIn(manager, user, RememberMe.Checked);
-                    IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
-                    System.Diagnostics.Process.Start("http://www.google.com");
+                {             
+                Response.Redirect("SearchInvoice.aspx");
             }
                 else
                 {

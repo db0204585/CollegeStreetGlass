@@ -1,10 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SearchInvoice.aspx.cs" Inherits="Account_SearchInvoice" %>
-
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="Content/invoice.css"/>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -28,27 +27,15 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-                 <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="~/Account/Login">Customer Management</a>
-                </div>
-                <div class="navbar-collapse collapse">
-            
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a runat="server" href="~/Account/CreateInvoice">Create Invoice</a></li>
-                        <li><a runat="server" href="~/Account/SearchInvoice">Search Invoice</a></li>
-                        <li><a runat="server" href="~/Account/Manage">Log out</a></li>
-                    </ul>
-                   
-                </div>
-            </div>
-        </div>
+      
+      
+              <ul>
+                <li class="nav-item"><a href="#">Create Invoice</a></li>
+                <li class="nav-item"><a href="#">Search Invoices</a></li>
+                <li class="nav-item"><a href="#">Logout</a></li>
+              </ul>
+       
+       
     </form>
 </body>
 </html>
