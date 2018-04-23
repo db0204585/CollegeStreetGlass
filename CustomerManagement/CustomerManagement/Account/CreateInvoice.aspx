@@ -5,16 +5,17 @@
 		<meta charset="utf-8">
 		<title>Invoice</title>
 		<link rel="stylesheet" href="/Content/invoice.css">
-		<script src="script.js"></script>
 	</head>
 	<body>
-          <form id="form1" runat="server">       
-              <ul>
-                <li class="nav-item"><a href="#">Logout</a></li>
-                <li class="nav-item"><a href="/Account/CreateInvoice.aspx">Create Invoice</a></li>
-                <li class="nav-item"><a href="#">Search Invoices</a></li>
-              </ul>  
-    </form>
+          <form id="form1" runat="server">   
+              <nav>
+                  <ul>
+                    <li class="nav-item"><a href="#">Logout</a></li>
+                    <li class="nav-item"><a href="/Account/CreateInvoice.aspx">Create Invoice</a></li>
+                    <li class="nav-item"><a href="#">Search Invoices</a></li>
+                  </ul>  
+              </nav>
+        </form>
 		<header>
 			<h1>Invoice</h1>
             <img src="/logo.png" alt="Logo">
@@ -96,6 +97,6 @@
         <aside>
 			<h4><span>Thank you for your business</span></h4>
 		</aside>
-
+        <script src="/Scripts/invoice.js"></script>
 	</body>
 </html>
