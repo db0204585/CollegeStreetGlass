@@ -1,8 +1,8 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(CustomerManagement.Startup))]
-namespace CustomerManagement
+[assembly: OwinStartupAttribute(typeof(InvoiceProgram.Startup))]
+namespace InvoiceProgram
 {
     public partial class Startup {
         public void Configuration(IAppBuilder app) {

@@ -4,7 +4,7 @@ using System.Web;
 using System.Web.Routing;
 using Microsoft.AspNet.FriendlyUrls;
 
-namespace CustomerManagement
+namespace InvoiceProgram
 {
     public static class RouteConfig
     {

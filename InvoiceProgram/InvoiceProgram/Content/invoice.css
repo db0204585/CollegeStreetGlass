@@ -1,4 +1,4 @@
-ul {
+﻿ul {
     list-style-type: none;
     margin: 0;
     padding: 25px;
@@ -11,23 +11,23 @@ li {
     height: 34px;
 }
 
-    li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
 
-       
-        li a:hover {
-            background-color: #111;
-        }
 
-/* reset */
+li a:hover {
+    background-color: #111;
+}
 
 * {
-    border: 0;
+    border-style: none;
+    border-color: inherit;
+    border-width: 0;
     box-sizing: content-box;
     color: inherit;
     font-family: inherit;
@@ -36,10 +36,12 @@ li {
     font-weight: inherit;
     line-height: inherit;
     list-style: none;
-    margin: 0;
     padding: 0;
     text-decoration: none;
     vertical-align: top;
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
     /* content editable */
@@ -139,7 +141,6 @@ img {
     float: right;
     width: 200px;
     height: 150px;
-  
 }
 
 /* header */
@@ -300,7 +301,6 @@ aside h4 {
     border: none;
     border-width: 0 0 1px;
     margin: 0 0 1em;
-    
 }
 
 aside h4 {
@@ -385,3 +385,4 @@ tr:hover .cut {
 @page {
     margin: 0;
 }
+

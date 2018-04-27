@@ -4,7 +4,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 
-namespace CustomerManagement
+namespace InvoiceProgram
 {
     public partial class Startup {
 

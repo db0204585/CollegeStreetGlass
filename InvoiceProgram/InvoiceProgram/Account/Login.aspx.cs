@@ -3,15 +3,14 @@ using Microsoft.Owin.Security;
 using System;
 using System.Web;
 using System.Web.UI;
-using CustomerManagement;
-using System.Diagnostics;
+using InvoiceProgram;
 
 public partial class Account_Login : Page
 {
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register";
-            //OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
+          
             var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
             if (!String.IsNullOrEmpty(returnUrl))
             {
@@ -27,8 +26,9 @@ public partial class Account_Login : Page
                 var manager = new UserManager();
                 ApplicationUser user = manager.Find(UserName.Text, Password.Text);
                 if (user != null)
-                {             
-                Response.Redirect("SearchInvoice.aspx");
+                {
+                    
+                    Response.Redirect("CreateInvoice.aspx");
             }
                 else
                 {
@@ -37,4 +37,6 @@ public partial class Account_Login : Page
                 }
             }
         }
+
+  
 }

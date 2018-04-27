@@ -1,5 +1,4 @@
-﻿/* Shivving (IE8 is not supported, but at least it won't look as awful)
-/* ========================================================================== */
+﻿/* ========================================================================== */
 
 (function (document) {
     var
@@ -23,7 +22,6 @@
     return head.insertBefore(element.lastChild, head.firstChild);
 })(document);
 
-/* Prototyping
 /* ========================================================================== */
 
 (function (window, ElementPrototype, ArrayPrototype, polyfill) {
@@ -92,12 +90,12 @@ function updateNumber(e) {
     var
         activeElement = document.activeElement,
         value = parseFloat(activeElement.innerHTML),
-        wasPrice = activeElement.innerHTML == parsePrice(parseFloatHTML(activeElement));
+        wasPrice = activeElement.innerHTML === parsePrice(parseFloatHTML(activeElement));
 
-    if (!isNaN(value) && (e.keyCode == 38 || e.keyCode == 40 || e.wheelDeltaY)) {
+    if (!isNaN(value) && (e.keyCode === 38 || e.keyCode === 40 || e.wheelDeltaY)) {
         e.preventDefault();
 
-        value += e.keyCode == 38 ? 1 : e.keyCode == 40 ? -1 : Math.round(e.wheelDelta * 0.025);
+        value += e.keyCode === 38 ? 1 : e.keyCode === 40 ? -1 : Math.round(e.wheelDelta * 0.025);
         value = Math.max(value, 0);
 
         activeElement.innerHTML = wasPrice ? parsePrice(value) : value;
@@ -111,7 +109,11 @@ function updateNumber(e) {
 
 function updateInvoice() {
     var total = 0;
-    var cells, price, total, a, i;
+    var tax = .076;
+    var taxAmount = 0;
+    var taxedPrice = 0;
+    var totalWithLaborAndService;
+    //var cells, price, total, a, i;
 
     // update inventory cells
     // ======================
@@ -126,7 +128,13 @@ function updateInvoice() {
         // add price to total
         total += price;
 
-        // set row total
+        // calculate taxes
+        taxAmount = total * tax;
+
+        //add taxes to total 
+        taxedPrice = total + taxAmount;
+
+         //set row total
         cells[4].innerHTML = price;
     }
 
@@ -135,12 +143,33 @@ function updateInvoice() {
 
     // get balance cells
     cells = document.querySelectorAll('table.balance td:last-child span:last-child');
+    
 
-    // set total
+    // set subtotal
     cells[0].innerHTML = total;
 
+    // tax amount
+    cells[1].innerHTML = taxAmount;
+
+    // set labor price
+    var labor = cells[2].innerHTML;
+
+    // set service call price
+    var service = cells[3].innerHTML;
+
+    // set amount paid
+    var amtPaid = cells[4].innerHTML;
+
+    totalWithLaborAndService = taxedPrice + labor + service;
+
+    // set total
+    cells[5].innerHTML = totalWithLaborAndService;
+
+    // set ballance due
+    cells[6].innerHTML = totalWithLaborAndService - amtPaid;
+
     // set balance and meta balance
-    cells[2].innerHTML = document.querySelector('table.meta tr:last-child td:last-child span:last-child').innerHTML = parsePrice(total - parseFloatHTML(cells[1]));
+    //cells[2].innerHTML = document.querySelector('table.meta tr:last-child td:last-child span:last-child').innerHTML = parsePrice(taxedPrice);
 
     // update prefix formatting
     // ========================
@@ -151,7 +180,7 @@ function updateInvoice() {
     // update price formatting
     // =======================
 
-    for (a = document.querySelectorAll('span[data-prefix] + span'), i = 0; a[i]; ++i) if (document.activeElement != a[i]) a[i].innerHTML = parsePrice(parseFloatHTML(a[i]));
+    for (a = document.querySelectorAll('span[data-prefix] + span'), i = 0; a[i]; ++i) if (document.activeElement !== a[i]) a[i].innerHTML = parsePrice(parseFloatHTML(a[i]));
 }
 
 /* On Content Load
@@ -167,12 +196,12 @@ function onContentLoad() {
     function onClick(e) {
         var element = e.target.querySelector('[contenteditable]'), row;
 
-        element && e.target != document.documentElement && e.target != document.body && element.focus();
+        element && e.target !== document.documentElement && e.target !== document.body && element.focus();
 
         if (e.target.matchesSelector('.add')) {
             document.querySelector('table.inventory tbody').appendChild(generateTableRow());
         }
-        else if (e.target.className == 'cut') {
+        else if (e.target.className === 'cut') {
             row = e.target.ancestorQuerySelector('tr');
 
             row.parentNode.removeChild(row);

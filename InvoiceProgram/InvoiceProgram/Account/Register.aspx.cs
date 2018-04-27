@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 using System.Web.UI;
-using CustomerManagement;
+using InvoiceProgram;
 
 public partial class Account_Register : Page
 {
